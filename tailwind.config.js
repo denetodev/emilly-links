@@ -18,6 +18,7 @@ module.exports = {
         // Privacy
         "privacy-primary": "rgba(255, 107, 53, 0.6)", // #FF6B35 com 70% de opacidade
         "privacy-secondary": "rgba(247, 147, 30, 0.3)", // #F7931E com 70% de opacidade
+        "privacy-icon-orange": "#F7931E",
       },
       backgroundImage: {
         // Gradientes para os backgrounds dos cards sociais
@@ -28,7 +29,7 @@ module.exports = {
         "telegram-gradient-card":
           "linear-gradient(to bottom right, theme(colors.telegram-primary) 80%, theme(colors.telegram-secondary) 90%)",
         "privacy-gradient-card":
-          "linear-gradient(to bottom right, theme(colors.privacy-primary) 30%, theme(colors.privacy-secondary) 90%)",
+          "linear-gradient(to bottom right, theme(colors.privacy-primary) 60%, theme(colors.privacy-secondary) 90%)",
       },
     },
   },

@@ -1,0 +1,181 @@
+/* src/app/components/social-cards/privacy-card/privacy-card.component.css */
+
+/*
+  A classe .card-base é definida globalmente em src/styles.css.
+  Evite redefini-la aqui a menos que seja para uma sobrescrita MUITO específica
+  que não possa ser feita com classes Tailwind.
+*/
+/*
+.card-base {
+  border-color: #f7921e71;
+  position: relative;
+  overflow: hidden;
+}
+*/
+
+/* Borda específica para o Privacy */
+.border-privacy-border {
+  border: 1px solid rgba(247, 146, 30, 0.3); /* Cor laranja do Privacy com opacidade */
+}
+
+/* Gradiente de fundo específico para o Privacy Card */
+.bg-privacy-gradient-card {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(247, 146, 30, 0.2) 25%,
+    rgba(251, 146, 60, 0.521) 50%
+  );
+  backdrop-filter: blur(10px); /* Efeito de glassmorphism */
+  border-radius: 16px; /* Borda arredondada */
+}
+
+/* Wrapper para os links do Privacy */
+.privacy-link-wrapper {
+  position: relative; /* Necessário para posicionar pseudo-elementos */
+  /* A transição de transform (translateY) no hover já pode ser feita via Tailwind no app-link-button
+     ou no próprio wrapper se você desejar um efeito mais genérico para todos os links.
+     Se o app-link-button já tiver 'group-hover:translate-y-[-2px]', esta regra é redundante. */
+  transition: transform 0.3s ease; /* Adicionado transição para o translateY */
+}
+
+.privacy-link-wrapper:hover {
+  transform: translateY(-2px);
+}
+
+/* Estilo específico para os link-buttons do Privacy (afeta o componente <app-link-button>) */
+.privacy-link-item {
+  /* Transições, display e width já devem estar no app-link-button ou são globais */
+  /* filter: brightness(1.1); e box-shadow: no hover são customizados, podem ficar aqui. */
+  transition: filter 0.3s ease, box-shadow 0.3s ease; /* Transição suave para estes efeitos */
+}
+
+.privacy-link-item:hover {
+  filter: brightness(1.1); /* Aumenta o brilho no hover */
+  box-shadow: 0 4px 20px rgba(247, 146, 30, 0.2); /* Sombra na cor do Privacy */
+}
+
+/* Animação para o indicador de rede - cor laranja */
+@keyframes pulse-orange {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(251, 146, 60, 0.479); /* Sombra inicial transparente (laranja) */
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(251, 146, 60, 0); /* Sombra expandida e transparente */
+  }
+}
+
+/* Aplica a animação ao elemento com a classe 'animate-pulse' (ou 'animate-pulse-orange' se você usar essa) */
+.animate-pulse {
+  /* Se você usar a classe padrão do Tailwind 'animate-pulse' no HTML */
+  animation: pulse-orange 2s infinite;
+}
+/* Se você usar uma classe específica como 'animate-pulse-orange' no HTML, defina-a assim: */
+/*
+.animate-pulse-orange {
+  animation: pulse-orange 2s infinite;
+}
+*/
+
+/*
+  Remoção da media query para responsividade.
+  As classes responsivas do Tailwind no HTML (ex: w-8 h-8 sm:w-10 sm:h-10) já lidam com isso.
+*/
+/*
+@media (max-width: 640px) {
+  .card-base {
+    margin: 0 16px;
+  }
+  .privacy-link-wrapper {
+    margin-bottom: 12px;
+  }
+}
+*/
+
+/* Efeito de foco para acessibilidade (quando o link é tabulado/focado) */
+.privacy-link-item:focus {
+  outline: 2px solid rgba(247, 146, 30, 0.349); /* Borda de foco visível na cor do Privacy */
+  outline-offset: 2px; /* Afasta a borda de foco do elemento */
+  border-radius: 12px; /* Mantém o border-radius do item */
+}
+
+/* Estilo para o estado ativo (quando o link está sendo clicado/pressionado) */
+.privacy-link-item:active {
+  transform: scale(0.98); /* Pequeno encolhimento para feedback visual */
+}
+
+/* Efeito específico do Privacy - security glow (pseudo-elemento ::before) */
+/* Este é o gradiente que aparece no fundo do item no hover */
+.privacy-link-wrapper:hover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    rgba(247, 146, 30, 0.397),
+    rgba(251, 146, 60, 0.438)
+  );
+  border-radius: 12px; /* Adapta ao border-radius do link */
+  opacity: 0;
+  /* animation: fadeInOrange 0.3s ease forwards; - Substituído por transition */
+  transition: opacity 0.3s ease; /* Transição para o fade-in/out */
+  z-index: -1; /* Garante que fique atrás do conteúdo */
+}
+
+/* Estado de hover do gradiente */
+.privacy-link-wrapper:hover::before {
+  opacity: 1;
+}
+
+/* Efeito de brilho sutil para documentos importantes (pseudo-elemento ::after) */
+.privacy-link-wrapper:hover::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(247, 146, 30, 0.37) 0%,
+    transparent 70%
+  );
+  border-radius: 12px; /* Adapta ao border-radius do link */
+  opacity: 0;
+  animation: documentGlow 2s infinite; /* Aplica a animação de brilho */
+  z-index: -1; /* Garante que fique atrás do conteúdo */
+  pointer-events: none; /* Garante que não interfira com cliques */
+}
+
+@keyframes documentGlow {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.9); /* Começa ligeiramente menor */
+  }
+  50% {
+    opacity: 1;
+    transform: scale(
+      1
+    ); /* Expande para o tamanho normal e fica opaco no meio da animação */
+  }
+}
+
+/* Melhorias específicas para o header (sombra no texto do título) */
+.card-base h2 {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilo para a borda do footer */
+.card-base .border-t {
+  border-color: rgba(
+    247,
+    146,
+    30,
+    0.2
+  ); /* Borda na cor do Privacy com opacidade */
+}

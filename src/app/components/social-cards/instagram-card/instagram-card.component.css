@@ -1,0 +1,186 @@
+/* src/app/components/social-cards/instagram-card/instagram-card.component.css */
+
+/*
+  A classe .card-base é definida globalmente em src/styles.css.
+  Evite redefini-la aqui a menos que seja para uma sobrescrita MUITO específica
+  que não possa ser feita com classes Tailwind. O ideal é que a maioria
+  dos estilos base venham do main-layout e do styles.css.
+*/
+/*
+.card-base {
+  border-color: #9d58cc8f;
+  position: relative;
+  overflow: hidden;
+}
+*/
+
+/* Borda específica para o Instagram.
+   Se 'border-instagram-border' for uma classe Tailwind definida em tailwind.config.js,
+   esta regra pode ser redundante e deve ser removida.
+   Caso contrário, mantenha-a se for um estilo CSS puro.
+*/
+.border-instagram-border {
+  border: 1px solid rgba(228, 64, 95, 0.3); /* Cor principal do Instagram com opacidade */
+  box-shadow: 0 0 20px rgba(228, 64, 95, 0.1);
+}
+
+/* Estilo para os links do Instagram (contêiner de cada item clicável) */
+.instagram-link-item {
+  text-decoration: none; /* Remove sublinhado padrão do link */
+  color: inherit; /* Herda a cor do texto do elemento pai */
+  position: relative; /* Necessário para posicionar o pseudo-elemento ::before */
+  /* As transições, transformações de hover (scale, shadow) e cores de texto no hover
+     já são aplicadas via classes Tailwind no HTML (ex: group-hover:scale-[1.02]).
+     Evite duplicar esses estilos aqui. */
+}
+
+/* Efeito de hover com gradiente Instagram usando pseudo-elemento ::before */
+.instagram-link-item::before {
+  content: ""; /* Conteúdo vazio para o pseudo-elemento */
+  position: absolute; /* Posicionamento absoluto dentro do pai com 'position: relative' */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; /* Ocupa todo o espaço do elemento pai */
+  background: linear-gradient(
+    45deg,
+    rgba(228, 64, 95, 0.1),   /* instagram-primary com 10% de opacidade */
+    rgba(131, 58, 180, 0.1)  /* instagram-secondary com 10% de opacidade */
+  );
+  border-radius: 12px; /* Mantém o border-radius do item de link */
+  opacity: 0; /* Começa invisível */
+  z-index: -1; /* Garante que o gradiente fique atrás do conteúdo do link */
+  transition: opacity 0.3s ease; /* Transição suave para o efeito de fade-in/out */
+}
+
+/* Estado de hover do gradiente */
+.instagram-link-item:hover::before {
+  opacity: 1; /* Fica visível no hover */
+}
+
+/* Animação para o indicador de rede (ponto que pulsa no canto do ícone) */
+@keyframes pulse-instagram {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(228, 64, 95, 0.7); /* Sombra inicial transparente */
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(228, 64, 95, 0); /* Sombra expandida e transparente */
+  }
+}
+
+/* Aplica a animação ao elemento com a classe 'animate-pulse' (ou 'animate-pulse-instagram' se você usar essa) */
+.animate-pulse { /* Se você usar a classe padrão do Tailwind 'animate-pulse' no HTML */
+  animation: pulse-instagram 2s infinite;
+}
+/* Se você usar uma classe específica como 'animate-pulse-instagram' no HTML, defina-a assim: */
+/*
+.animate-pulse-instagram {
+  animation: pulse-instagram 2s infinite;
+}
+*/
+
+
+/* Estilo especial para as imagens de perfil dentro dos itens de link */
+.instagram-link-item img {
+  position: relative; /* Necessário para posicionar o anel decorativo */
+  /* Transições e transformações de hover (scale, shadow) já no HTML via Tailwind:
+     transition-all duration-300
+     group-hover:scale-105
+     group-hover:shadow-lg
+  */
+}
+
+/* Anel decorativo do Instagram (efeito de "story" ao redor da imagem de perfil) */
+/* Este div deve ter a classe 'instagram-story-ring' no HTML, e estar dentro
+   do elemento que contém a imagem de perfil (que por sua vez deve ter 'position: relative'). */
+.instagram-story-ring {
+  position: absolute; /* Posicionamento absoluto em relação ao pai com 'position: relative' */
+  inset: -2px; /* Controla a distância do anel da borda da imagem. Ajuste conforme necessário. */
+  background: linear-gradient(
+    45deg,
+    #f09433 0%,   /* Cores do gradiente do Instagram */
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+  border-radius: 50%; /* Torna o anel circular */
+  opacity: 0; /* Começa invisível */
+  transition: all 0.3s ease; /* Transição suave para opacidade e transform */
+  z-index: -1; /* Garante que o anel fique atrás da imagem de perfil */
+}
+
+/* Estado de hover do anel decorativo */
+.instagram-link-item:hover .instagram-story-ring {
+  opacity: 1; /* Fica visível no hover */
+  transform: scale(1.1); /* Animação de escala sutil no hover */
+}
+
+/* Efeito de brilho adicional no hover do item de link completo */
+/* Isso pode ser redundante se você já usa 'group-hover:shadow-lg' no HTML.
+   Escolha qual estilo de sombra de hover você prefere. */
+.instagram-link-item:hover {
+  box-shadow: 0 8px 25px rgba(228, 64, 95, 0.2); /* Sombra mais pronunciada na cor do Instagram */
+}
+
+
+/* Efeito de foco para acessibilidade (quando o link é tabulado/focado) */
+.instagram-link-item:focus {
+  outline: 2px solid rgba(228, 64, 95, 0.5); /* Borda de foco visível */
+  outline-offset: 2px; /* Afasta a borda de foco do elemento */
+  border-radius: 12px; /* Mantém o border-radius do item */
+}
+
+/* Estilo para o estado ativo (quando o link está sendo clicado/pressionado) */
+.instagram-link-item:active {
+  transform: scale(0.98); /* Pequeno encolhimento para feedback visual */
+}
+
+/* Hover effect específico para o ícone de link externo (SVG) */
+.instagram-link-item:hover svg {
+  transform: rotate(-5deg) scale(1.1); /* Rotação e escala no hover */
+  filter: drop-shadow(0 2px 4px rgba(228, 64, 95, 0.3)); /* Sombra para o ícone */
+  transition: transform 0.3s ease, filter 0.3s ease; /* Transição suave para esses efeitos */
+}
+
+/* Animação de gradiente para o cabeçalho (se você tiver um elemento com esta classe no HTML) */
+.instagram-gradient-header {
+  background: linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+  background-size: 400% 400%; /* Permite a animação de deslocamento */
+  animation: gradientShift 3s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Efeito especial para o indicador de rede (se você tiver um elemento com esta classe no HTML) */
+.instagram-network-indicator {
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743); /* Gradiente para o indicador */
+  animation: pulse-instagram 2s infinite; /* Usa a animação de pulso definida acima */
+}
+
+/* Melhoria no contraste do texto para melhor legibilidade em fundos transparentes */
+.instagram-link-item h3 {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3); /* Sombra de texto sutil */
+}
+
+.instagram-link-item p {
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Sombra de texto sutil */
+}

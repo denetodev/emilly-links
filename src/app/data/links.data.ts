@@ -36,6 +36,26 @@ export const EMMILY_LINKS: SocialLink[] = [
 
   // TikTok
   {
+    id: 'tiktok-soy',
+    platform: SocialPlatform.TIKTOK,
+    username: '@soyymiilly',
+    displayName: 'Perfil Principal',
+    description: 'Me acompanhe nos meus momentos!',
+    url: 'https://www.tiktok.com/@soyymiilly',
+    profileImage: 'assets/images/profiles/tiktok/soyymiilly.jpg',
+    isActive: true,
+  },
+  {
+    id: 'tiktok-ops',
+    platform: SocialPlatform.TIKTOK,
+    username: '@milyx_ops',
+    displayName: 'Lives Diárias',
+    description: 'Um pouco de tudo pra você!',
+    url: 'https://www.tiktok.com/@milyx_ops',
+    profileImage: 'assets/images/profiles/tiktok/milyx-ops.jpg',
+    isActive: true,
+  },
+  {
     id: 'tiktok-live',
     platform: SocialPlatform.TIKTOK,
     username: '@milyzinha_live',
@@ -46,39 +66,8 @@ export const EMMILY_LINKS: SocialLink[] = [
     isActive: true,
     mainAccount: true,
   },
-  {
-    id: 'tiktok-ops',
-    platform: SocialPlatform.TIKTOK,
-    username: '@milyx_ops',
-    displayName: 'Conteúdo Variado',
-    description: 'Um pouco de tudo pra você!',
-    url: 'https://www.tiktok.com/@milyx_ops',
-    profileImage: 'assets/images/profiles/tiktok/milyx-ops.jpg',
-    isActive: true,
-  },
-  {
-    id: 'tiktok-soy',
-    platform: SocialPlatform.TIKTOK,
-    username: '@soyymiilly',
-    displayName: 'Bastidores',
-    description: 'Me acompanhe nos meus momentos!',
-    url: 'https://www.tiktok.com/@soyymiilly',
-    profileImage: 'assets/images/profiles/tiktok/soyymiilly.jpg',
-    isActive: true,
-  },
 
   // Telegram
-  {
-    id: 'telegram-business',
-    platform: SocialPlatform.TELEGRAM,
-    username: 'Contato Business',
-    displayName: 'Parcerias e Negócios',
-    description: 'Fale diretamente comigo!',
-    url: 'https://t.me/m/dwOKBHg3Mzkx',
-    profileImage: 'assets/images/profiles/telegram/business.jpg',
-    isActive: true,
-    mainAccount: true,
-  },
   {
     id: 'telegram-bot',
     platform: SocialPlatform.TELEGRAM,
@@ -99,6 +88,17 @@ export const EMMILY_LINKS: SocialLink[] = [
     url: 'https://t.me/milyxprevias',
     profileImage: 'assets/images/profiles/telegram/previas.jpg',
     isActive: true,
+  },
+  {
+    id: 'telegram-business',
+    platform: SocialPlatform.TELEGRAM,
+    username: 'Contato Business',
+    displayName: 'Parcerias e Negócios',
+    description: 'Fale diretamente comigo!',
+    url: 'https://t.me/m/dwOKBHg3Mzkx',
+    profileImage: 'assets/images/profiles/telegram/business.jpg',
+    isActive: true,
+    mainAccount: true,
   },
 
   // Privacy

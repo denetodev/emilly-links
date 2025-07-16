@@ -44,7 +44,7 @@
   /* Opção A: Usar variáveis CSS com cores Tailwind (requer um pouco de setup) */
   /* Ou, mais simplesmente, usar as cores diretamente ou um gradiente customizado aqui: */
 
-  background: linear-gradient(to right top, #e76bab, #6960e4a1, #a855f7);
+  background: linear-gradient(to right top, #e76bab, #6960e479, #a955f7ea);
   /* background: linear-gradient(to right top, #FFD1DC, #FFEDE0, #F0FFF0); */ /* Rosa Avermelhado, Pêssego, Creme */
   /* background: linear-gradient(to right top, #E6E6FA, #EDE9FE, #FEE2E2); */ /* Lavanda, Roxo, Rosa */
 

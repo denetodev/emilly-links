@@ -1,0 +1,178 @@
+/* src/app/components/social-cards/tiktok-card/tiktok-card.component.css */
+
+/*
+  A classe .card-base é definida globalmente em src/styles.css.
+  Evite redefini-la aqui a menos que seja para uma sobrescrita MUITO específica
+  que não possa ser feita com classes Tailwind.
+*/
+/*
+.card-base {
+  position: relative;
+  overflow: hidden;
+}
+*/
+
+/* Borda específica para o TikTok */
+.border-tiktok-border {
+  border: 1px solid rgba(255, 0, 80, 0.3); /* Cor principal do TikTok com opacidade */
+}
+
+/* Gradiente de fundo específico para o TikTok Card */
+.bg-tiktok-gradient-card {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.466) 0%,
+    rgba(255, 0, 81, 0.37) 25%,
+    /* Tom de rosa/vermelho do TikTok */ rgba(37, 244, 237, 0.062) 50%,
+    /* Tom de ciano do TikTok */ rgba(0, 0, 0, 0.959) 100%
+  );
+  backdrop-filter: blur(10px); /* Efeito de glassmorphism */
+  border-radius: 16px; /* Borda arredondada */
+}
+
+/* Estilo para os links do TikTok (contêiner de cada item clicável) */
+.tiktok-link-item {
+  text-decoration: none; /* Remove sublinhado padrão do link */
+  color: inherit; /* Herda a cor do texto do elemento pai */
+  position: relative; /* Necessário para pseudo-elementos ::before e ::after */
+  /* Transições e transformações de hover (scale, shadow) já no HTML via Tailwind:
+     transition-all duration-300
+     group-hover:scale-[1.02] group-hover:shadow-lg
+  */
+}
+
+/* Efeito de hover suave (fundo do item) */
+/* Esta regra é duplicada pela combinação bg-white/10 hover:bg-white/20 no HTML.
+   Recomenda-se remover esta regra CSS e confiar no Tailwind. */
+/*
+.tiktok-link-item:hover .tiktok-link-content {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+}
+*/
+
+/* Animação para o indicador de rede (ponto que pulsa no canto do ícone) */
+@keyframes pulse-pink {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.7); /* Sombra inicial transparente (rosa do TikTok) */
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(236, 72, 153, 0); /* Sombra expandida e transparente */
+  }
+}
+
+/* Aplica a animação ao elemento com a classe 'animate-pulse' (ou 'animate-pulse-pink' se você usar essa) */
+.animate-pulse {
+  /* Se você usar a classe padrão do Tailwind 'animate-pulse' no HTML */
+  animation: pulse-pink 2s infinite;
+}
+/* Se você usar uma classe específica como 'animate-pulse-pink' no HTML, defina-a assim: */
+/*
+.animate-pulse-pink {
+  animation: pulse-pink 2s infinite;
+}
+*/
+
+/* Estilo para as imagens de perfil dentro dos itens de link */
+.tiktok-link-item img {
+  /* Transições e transformações de hover (scale, shadow) já no HTML via Tailwind:
+     transition-all duration-300
+     group-hover:scale-105
+     group-hover:shadow-lg
+  */
+}
+
+/*
+  Remoção da media query para responsividade.
+  As classes responsivas do Tailwind no HTML (ex: p-2 sm:p-4) já lidam com isso.
+*/
+/*
+@media (max-width: 640px) {
+  .card-base {
+    margin: 0 16px;
+  }
+  .tiktok-link-item div {
+    padding: 12px 16px;
+  }
+  .tiktok-link-item img {
+    width: 40px;
+    height: 40px;
+  }
+}
+*/
+
+/* Efeito de foco para acessibilidade (quando o link é tabulado/focado) */
+.tiktok-link-item:focus {
+  outline: 2px solid rgba(255, 0, 80, 0.5); /* Borda de foco visível na cor do TikTok */
+  outline-offset: 2px; /* Afasta a borda de foco do elemento */
+  border-radius: 12px; /* Mantém o border-radius do item */
+}
+
+/* Estilo para o estado ativo (quando o link está sendo clicado/pressionado) */
+.tiktok-link-item:active {
+  transform: scale(0.98); /* Pequeno encolhimento para feedback visual */
+}
+
+/* Hover effect específico para o ícone de link externo (SVG) */
+.tiktok-link-item:hover svg {
+  transform: rotate(-5deg) scale(1.1); /* Rotação e escala no hover */
+  transition: transform 0.3s ease; /* Transição suave para esses efeitos */
+}
+
+/* Gradiente animado no hover (::before) - O mesmo que nos outros cards */
+/* Este é o gradiente que aparece no fundo do item no hover */
+.tiktok-link-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 0, 80, 0.1),
+    /* Cor rosa do TikTok com 10% de opacidade */ rgba(37, 244, 238, 0.1)
+      /* Cor ciano do TikTok com 10% de opacidade */
+  );
+  border-radius: 12px;
+  opacity: 0;
+  /* animation: fadeIn 0.3s ease forwards; - Substituído por transition */
+  transition: opacity 0.3s ease; /* Transição para o fade-in/out */
+  z-index: -1; /* Garante que fique atrás do conteúdo */
+}
+
+/* Estado de hover do gradiente */
+.tiktok-link-item:hover::before {
+  opacity: 1;
+}
+
+/* Efeito específico do TikTok - shimmer effect (brilho horizontal que se move) */
+.tiktok-link-item::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%; /* Começa fora da tela à esquerda */
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    /* Brilho branco semi-transparente */ transparent
+  );
+  animation: shimmer 1.5s infinite; /* Aplica a animação */
+  border-radius: 12px; /* Mantém o border-radius do item */
+  pointer-events: none; /* Garante que o efeito não interfira com cliques */
+  z-index: 1; /* Garante que o brilho apareça sobre o conteúdo se necessário */
+  mix-blend-mode: overlay; /* Experimente outros modos (e.g., screen, hard-light) para diferentes efeitos */
+}
+
+@keyframes shimmer {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 100%; /* Desliza para fora da tela à direita */
+  }
+}

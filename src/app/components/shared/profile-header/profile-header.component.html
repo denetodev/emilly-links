@@ -1,52 +1,144 @@
-<div class="flex flex-col items-center mb-10">
-  <video
-    autoplay
-    loop
-    muted
-    playsinline
-    alt="Vídeo de Perfil da Emilly"
-    class="w-36 h-36 rounded-full object-cover border-4 border-fuchsia-300 shadow-xl mb-4 transform transition-all duration-300 ease-in-out hover:scale-120"
+<!-- Profile Header Component -->
+<div class="relative flex flex-col items-center mb-12 px-4">
+  <!-- Background decorativo -->
+  <div
+    class="absolute inset-0 bg-gradient-to-b from-purple-900/20 to-transparent rounded-3xl blur-3xl -z-10"
+  ></div>
+
+  <!-- Container do vídeo com efeitos visuais -->
+  <div class="relative mb-6 group">
+    <!-- Anel decorativo animado -->
+    <div
+      class="absolute inset-0 rounded-full bg-gradient-to-r from-fuchsia-400 via-purple-500 to-pink-500 animate-pulse blur-sm group-hover:blur-md transition-all duration-300"
+    ></div>
+
+    <!-- Vídeo principal -->
+    <video
+      autoplay
+      loop
+      muted
+      playsinline
+      alt="Vídeo de Perfil da Emilly"
+      class="relative w-40 h-40 rounded-full object-cover border-4 border-white/20 shadow-2xl transform transition-all duration-500 ease-out hover:scale-105 hover:shadow-fuchsia-500/30 backdrop-blur-sm"
+    >
+      <source src="assets/videos/emilly-profile-video.mp4" type="video/mp4" />
+      Seu navegador não suporta a tag de vídeo.
+    </video>
+
+    <!-- Badge de status online -->
+    <div
+      class="absolute bottom-2 right-2 w-6 h-6 bg-green-500 rounded-full border-3 border-white shadow-lg animate-pulse"
+    ></div>
+  </div>
+
+  <!-- Nome e título -->
+  <div class="text-center mb-4">
+    <div class="relative inline-block">
+      <h1
+        class="text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 via-purple-400 to-pink-400 mb-2 tracking-tight animate-gradient"
+      >
+        Emilly
+      </h1>
+      <!-- Estrela decorativa animada -->
+      <div class="absolute -top-2 -right-8 text-2xl animate-bounce">✨</div>
+    </div>
+
+    <!-- Subtitle com destaque -->
+    <div
+      class="inline-flex items-center bg-gradient-to-r from-purple-600/30 to-pink-600/30 backdrop-blur-sm rounded-full px-4 py-2 mb-4 border border-purple-500/20"
+    >
+      <span class="text-sm font-medium text-purple-200">Olá babys!!</span>
+      <span class="mx-2 text-purple-400">•</span>
+      <span class="text-sm font-medium text-pink-200">22 anos</span>
+    </div>
+  </div>
+
+  <!-- Descrição -->
+  <p
+    class="text-lg text-gray-300 text-center max-w-md leading-relaxed mb-8 px-4"
   >
-    <source src="assets/videos/emilly-profile-video.mp4" type="video/mp4" />
-    Seu navegador não suporta a tag de vídeo.
-  </video>
-  <h1
-    class="text-5xl font-extrabold text-white mb-2 tracking-wide text-shadow-lg"
-  >
-    Emilly ✨
-  </h1>
-  <p class="text-xl text-gray-300 text-center max-w-sm leading-relaxed">
-    Produtora de conteúdo adulto, 22 anos, sempre buscando te surpreender!
+    Sempre te
+    <span
+      class="text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 to-pink-400 font-semibold"
+      >surpreendendo</span
+    >
+    com conteúdos e Lives exclusivas ✨
   </p>
-  <div class="flex mt-6 space-x-6">
+
+  <!-- Social Media Links -->
+  <div class="flex items-center justify-center space-x-6">
+    <!-- Instagram -->
     <a
       href="https://www.instagram.com/opsmilysoy"
       target="_blank"
-      class="text-gray-400 hover:text-instagram-primary transition duration-300"
+      class="group relative p-3 rounded-2xl bg-gradient-to-br from-pink-500/20 to-purple-600/20 hover:from-pink-500/30 hover:to-purple-600/30 border border-pink-500/30 hover:border-pink-400/50 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-pink-500/25"
     >
       <img
         src="assets/images/icons/instagram.svg"
         alt="Instagram"
-        class="w-9 h-9"
+        class="w-8 h-8 transition-all duration-300 group-hover:scale-110"
       />
+      <!-- Tooltip -->
+      <div
+        class="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap"
+      >
+        &#64;opsmilysoy
+      </div>
     </a>
+
+    <!-- TikTok -->
     <a
-      href="https://www.tiktok.com/@milyzinha_live"
+      href="https://www.tiktok.com/@milyzinhxx"
       target="_blank"
-      class="text-gray-400 hover:text-tiktok-secondary transition duration-300"
+      class="group relative p-3 rounded-2xl bg-gradient-to-br from-gray-800/20 to-pink-600/20 hover:from-gray-800/30 hover:to-pink-600/30 border border-gray-600/30 hover:border-pink-400/50 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-pink-500/25"
     >
-      <img src="assets/images/icons/tiktok.svg" alt="TikTok" class="w-9 h-9" />
+      <img
+        src="assets/images/icons/tiktok.svg"
+        alt="TikTok"
+        class="w-8 h-8 transition-all duration-300 group-hover:scale-110"
+      />
+      <!-- Tooltip -->
+      <div
+        class="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap"
+      >
+        &#64;milyzinhxx
+      </div>
     </a>
+
+    <!-- Telegram -->
     <a
-      href="https://t.me/seuwpp_para_business"
+      href="https://t.me/Opsmiilyx_bot"
       target="_blank"
-      class="text-gray-400 hover:text-telegram-primary transition duration-300"
+      class="group relative p-3 rounded-2xl bg-gradient-to-br from-blue-500/20 to-cyan-600/20 hover:from-blue-500/30 hover:to-cyan-600/30 border border-blue-500/30 hover:border-blue-400/50 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-500/25"
     >
       <img
         src="assets/images/icons/telegram.svg"
         alt="Telegram"
-        class="w-9 h-9"
+        class="w-8 h-8 transition-all duration-300 group-hover:scale-110"
       />
+      <!-- Tooltip -->
+      <div
+        class="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap"
+      >
+        Bot Oficial
+      </div>
     </a>
+  </div>
+
+  <!-- Indicador de scroll (opcional) -->
+  <div class="mt-8 animate-bounce">
+    <svg
+      class="w-6 h-6 text-gray-200"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M19 14l-7 7m0 0l-7-7m7 7V3"
+      ></path>
+    </svg>
   </div>
 </div>

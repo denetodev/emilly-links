@@ -1,0 +1,92 @@
+/* src/app/components/social-cards/telegram-card/telegram-card.component.css */
+
+/* Estilos para a classe base do card (já definida em styles.css, mas se houver necessidade de sobrescrever) */
+/* .card-base {
+   border-color: #4a7e9670;
+   position: relative;
+   overflow: hidden;
+} */
+
+/* Borda específica para o Telegram.
+   Se 'border-telegram-border' for uma classe Tailwind definida em tailwind.config.js,
+   esta regra pode ser redundante e deve ser removida.
+   Caso contrário, mantenha-a se for um estilo CSS puro.
+*/
+.border-telegram-border {
+  border: 1px solid rgba(0, 136, 204, 0.3);
+}
+
+/* Animação para o indicador de rede */
+@keyframes pulse-blue {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(59, 130, 246, 0);
+  }
+}
+
+/* Aplicar a animação ao elemento que tem a classe 'animate-pulse' */
+/* Se você usar a classe padrão do Tailwind 'animate-pulse', esta regra pode ser omitida */
+.animate-pulse {
+  animation: pulse-blue 2s infinite;
+}
+
+/* Estilo para os links do Telegram */
+.telegram-link-item {
+  text-decoration: none;
+  color: inherit;
+  /* Classes de transição e hover já no HTML via Tailwind:
+     transition-all duration-300
+     group-hover:scale-[1.02] group-hover:shadow-lg */
+}
+
+/* Efeito de foco para acessibilidade */
+.telegram-link-item:focus {
+  outline: 2px solid rgba(0, 136, 204, 0.5);
+  outline-offset: 2px;
+  border-radius: 12px;
+}
+
+/* Estilo para o estado ativo (clique) */
+.telegram-link-item:active {
+  transform: scale(0.98);
+}
+
+/* Hover effect específico para o ícone de link externo (SVG) */
+.telegram-link-item:hover svg {
+  transform: rotate(-5deg) scale(1.1);
+  transition: transform 0.3s ease; /* Adicionando transição para o SVG também */
+}
+
+/* Gradiente animado no hover (pseudo-elemento ::before) */
+.telegram-link-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    rgba(0, 136, 204, 0.1),
+    /* Cor principal do Telegram com 10% de opacidade */ rgba(34, 158, 217, 0.1)
+      /* Cor secundária do Telegram com 10% de opacidade */
+  );
+  border-radius: 12px; /* Mantém o border-radius do item */
+  opacity: 0; /* Começa invisível */
+  z-index: -1; /* Garante que o gradiente fique atrás do conteúdo do link */
+  transition: opacity 0.3s ease; /* Transição suave para o fade-in/out */
+}
+
+.telegram-link-item:hover::before {
+  opacity: 1; /* Fica visível no hover */
+}
+
+/*
+  Remoção das Media Queries e regras duplicadas:
+  As classes Tailwind responsivas no HTML (sm:p-4, sm:w-12, etc.)
+  já lidam com a responsividade de forma mais eficiente.
+  O `main-layout` lida com as margens gerais.
+*/
