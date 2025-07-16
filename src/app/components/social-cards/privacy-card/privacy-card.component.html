@@ -1,0 +1,22 @@
+<div class="card-base w-full overflow-hidden bg-privacy-gradient-card">
+  <div class="flex items-center mb-6">
+    <img
+      src="assets/images/icons/privacy.svg"
+      alt="Privacy Icon"
+      class="w-10 h-10 mr-4"
+    />
+    <h2 class="text-3xl font-bold text-white drop-shadow-md">Privacy</h2>
+  </div>
+
+  <div class="space-y-4">
+    <div *ngFor="let link of privacyLinks">
+      <app-link-button
+        [url]="link.url"
+        [text]="link.displayName"
+        [iconUrl]="link.profileImage"
+        [badgeText]="link.isVip ? 'VIP' : undefined"
+        [gradientClass]="platformColors.gradient"
+      ></app-link-button>
+    </div>
+  </div>
+</div>

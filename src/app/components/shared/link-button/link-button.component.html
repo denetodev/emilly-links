@@ -1,0 +1,37 @@
+<a
+  [href]="url"
+  target="_blank"
+  [ngClass]="getButtonClasses()"
+  class="link-button-base relative overflow-hidden group"
+>
+  <div
+    class="absolute inset-0 bg-gradient-to-r {{
+      gradientClass
+    }} opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+  ></div>
+  <div class="flex items-center justify-between w-full relative z-10 px-4">
+    <div class="flex items-center">
+      <img *ngIf="iconUrl" [src]="iconUrl" alt="Ícone" class="w-7 h-7 mr-3" />
+      <span class="text-white">{{ text }}</span>
+    </div>
+    <span
+      *ngIf="badgeText"
+      class="bg-white text-gray-900 text-xs font-bold px-3 py-1 rounded-full ml-2 shadow"
+      >{{ badgeText }}</span
+    >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-6 w-6 text-white ml-2"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+      />
+    </svg>
+  </div>
+</a>

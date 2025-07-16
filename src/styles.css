@@ -1,1 +1,75 @@
-/* You can add global styles to this file, and also import other style files */
+/* Importação de fontes */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+/* Se precisar de Inter, adicione aqui também */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+/* Base e componentes do Tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Default CSS (mantido do exemplo anterior para variáveis, se necessário) */
+:root {
+  font-family: "Poppins", "Inter", system-ui, Avenir, Helvetica, Arial,
+    sans-serif; /* Usar Poppins ou Inter como preferir */
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Estilos globais para a página de links da Emilly */
+body {
+  @apply bg-gray-900 text-white;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden; /* Previne scroll horizontal */
+  line-height: 1.6; /* Melhorar legibilidade */
+}
+
+/* Classes utilitárias base para reuso em componentes */
+/* Ajuste no card-base para um visual mais limpo */
+.card-base {
+  @apply bg-opacity-70 backdrop-blur-md rounded-2xl shadow-xl p-6 mb-6
+         transform transition-all duration-300 ease-in-out hover:scale-[1.01] hover:shadow-2xl
+         border border-gray-700;
+}
+
+.link-button-base {
+  @apply w-full flex items-center justify-center p-4 rounded-xl font-semibold text-lg
+         transition-all duration-200 ease-in-out hover:opacity-90;
+}
+
+/* Estilo para links dentro dos cards sociais (que não são o link-button principal) */
+.social-sub-link {
+  @apply flex items-center justify-between p-3 rounded-xl cursor-pointer
+         bg-white bg-opacity-10 hover:bg-opacity-20 transition duration-200 ease-in-out;
+}
+
+.social-sub-link img {
+  @apply w-10 h-10 rounded-full object-cover mr-3 border-2 border-white border-opacity-50;
+}
+
+.social-sub-link-text {
+  @apply flex-grow;
+}
+
+.social-sub-link-title {
+  @apply text-white text-base font-semibold;
+}
+
+.social-sub-link-subtitle {
+  @apply text-gray-300 text-sm;
+}

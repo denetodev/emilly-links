@@ -1,0 +1,60 @@
+/* background.component.css */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes pulse-slow {
+  0% {
+    opacity: 0.1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.25;
+    transform: scale(1.02);
+  } /* Aumentar um pouco a opacidade para ficar visível */
+  100% {
+    opacity: 0.1;
+    transform: scale(1);
+  }
+}
+
+.background-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* Certifique-se de que está no fundo */
+
+  /* Usar um dos novos gradientes definidos no tailwind.config.js */
+  /* Escolha um destes (ou experimente): */
+  /* background-image: var(--tw-gradient-to-r), var(--tw-gradient-from-feminine-gradient-light); */ /* Isso não funciona diretamente */
+
+  /* A forma mais direta é usar as cores do Tailwind aqui e deixar o @apply na classe de fundo */
+  /* ou definir o gradiente diretamente como um background-image personalizado */
+
+  /* Opção A: Usar variáveis CSS com cores Tailwind (requer um pouco de setup) */
+  /* Ou, mais simplesmente, usar as cores diretamente ou um gradiente customizado aqui: */
+
+  background: linear-gradient(to right top, #e76bab, #6960e4a1, #a855f7);
+  /* background: linear-gradient(to right top, #FFD1DC, #FFEDE0, #F0FFF0); */ /* Rosa Avermelhado, Pêssego, Creme */
+  /* background: linear-gradient(to right top, #E6E6FA, #EDE9FE, #FEE2E2); */ /* Lavanda, Roxo, Rosa */
+
+  background-size: 200% 200%;
+  animation: gradient-shift 45s ease infinite;
+}
+
+/* Ajustar a opacidade e o pulso das "sparkles" para ficarem visíveis no fundo claro */
+.animate-pulse-slow {
+  animation: pulse-slow 20s ease-in-out infinite;
+  /* Se suas sparkles são SVGs ou PNGs, você pode precisar de mais opacidade */
+  opacity: 0.15; /* Ajuste este valor conforme o quão visível você quer as sparkles */
+}
